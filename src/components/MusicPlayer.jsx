@@ -6,10 +6,13 @@ export default function MusicPlayer() {
   const audioRef = useRef(null);
 
   useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
     if (musicOn) {
-      audioRef.current.play();
+      audio.play().catch(() => {});
     } else {
-      audioRef.current.pause();
+      audio.pause();
     }
   }, [musicOn]);
 

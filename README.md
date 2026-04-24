@@ -1,16 +1,41 @@
-# React + Vite
+# Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern personal portfolio website built with React, Vite, Tailwind CSS, and Framer Motion.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This repository contains a JavaScript-based portfolio app with the following features:
 
-## React Compiler
+- Hero and introduction section
+- About and skills sections
+- Project showcase
+- Custom theme context for light/dark mode
+- Music player and cursor glow effects
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- React 18
+- Vite
+- Tailwind CSS
+- Framer Motion
+- Lucide React
+- React Icons
+- ESLint
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Available Scripts
+
+- `npm run dev` - Start Vite development server
+- `npm run build` - Build production assets
+- `npm run preview` - Preview the production build locally
+
+## Project Structure
+
+- src/main.jsx - Application entry point
+- src/App.jsx - Root React component
+- src/components/ - Portfolio UI components
+- src/context/ThemeContext.jsx - Theme provider
+- src/index.css / src/App.css - Global and app styles
+
+## Notes
+
+This repo is currently a Vite-powered React app, not a Next.js application.

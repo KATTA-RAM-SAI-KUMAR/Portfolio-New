@@ -1,9 +1,11 @@
 import { useTheme } from "../context/ThemeContext";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"; // ✅ add this
 
 export default function Hero() {
   const { theme } = useTheme();
+  const navigate = useNavigate(); // ✅
 
   const roles = ["Software Developer", "Tech Explorer", "Problem Solver"];
   const [text, setText] = useState("");
@@ -28,15 +30,16 @@ export default function Hero() {
   }, [i]);
 
   return (
-    <section
-      id="Home"
-      className="min-h-[85vh] flex items-center px-6"
-      style={{ background: theme.bg }}
-    >
+    <section className="min-h-[85vh] flex items-center px-6">
       <div className="max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center">
 
         {/* IMAGE */}
-        <motion.div className="flex justify-center">
+        <motion.div
+          className="flex justify-center"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="relative group">
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 blur-2xl opacity-40 group-hover:opacity-70 transition"></div>
 
@@ -50,12 +53,16 @@ export default function Hero() {
         </motion.div>
 
         {/* TEXT */}
-        <div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
           <h1
             className="text-4xl md:text-5xl font-bold mb-4"
             style={{ color: theme.text }}
           >
-            Ram Sai Kumar Katta
+            Katta Ram Sai Kumar
           </h1>
 
           <h2 className="text-lg md:text-xl mb-4 text-violet-500 h-6">
@@ -69,18 +76,24 @@ export default function Hero() {
           </p>
 
           <div className="flex gap-4">
-            <button className="px-6 py-2 rounded-lg bg-gradient-to-r from-purple-600 to-cyan-500 text-white">
+            {/* Resume */}
+            <button
+              onClick={() => window.open("/resume.pdf", "_blank")}
+              className="px-6 py-2 rounded-lg bg-gradient-to-r from-purple-600 to-cyan-500 text-white"
+            >
               Resume
             </button>
 
+            {/* Contact page */}
             <button
+              onClick={() => navigate("/contact")}
               className="px-6 py-2 rounded-lg border"
               style={{ borderColor: theme.border, color: theme.text }}
             >
               Contact
             </button>
           </div>
-        </div>
+        </motion.div>
 
       </div>
     </section>

@@ -2,20 +2,16 @@ import { useTheme } from "../context/ThemeContext";
 import { motion } from "framer-motion";
 
 export default function About() {
-  const { theme } = useTheme();
+  const { theme, mode } = useTheme();
 
   return (
-    <section
-      id="About"
-      className="py-20 px-6"
-      style={{ background: theme.bg }}
-    >
+    <section className="py-20 px-6 min-h-[80vh]">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
 
         {/* LEFT TEXT */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          animate={{ opacity: 1, x: 0 }} // ✅ changed from whileInView
           transition={{ duration: 0.6 }}
         >
           <h2
@@ -40,12 +36,25 @@ export default function About() {
         {/* RIGHT CARD */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="bg-white/5 border border-white/10 backdrop-blur-lg rounded-xl p-6"
+          animate={{ opacity: 1, y: 0 }} // ✅ changed
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="rounded-xl p-6 border backdrop-blur-lg"
+          style={{
+            background:
+              mode === "dark"
+                ? "rgba(255,255,255,0.05)"
+                : "rgba(0,0,0,0.03)",
+            borderColor: theme.border,
+          }}
         >
-          <h3 className="text-xl font-semibold mb-3">Quick Info</h3>
+          <h3
+            className="text-xl font-semibold mb-3"
+            style={{ color: theme.text }}
+          >
+            Quick Info
+          </h3>
 
-          <ul className="space-y-2 text-gray-400">
+          <ul className="space-y-2" style={{ color: theme.subtext }}>
             <li>🎓 B.Tech in Data Science</li>
             <li>💻 Full Stack Developer</li>
             <li>📍 India</li>
